@@ -1,0 +1,97 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* BODY / THEME */
+body {
+    background: #f3f3f3;
+    color: #222;
+    transition: background 0.4s, color 0.4s;
+}
+
+body.dark {
+    background: #111;
+    color: #fff;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #002b5c;
+    padding: 1rem;
+    color: white;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #b30000;
+}
+
+#theme-toggle {
+    background: #002b5c;
+    color: white;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* SECTIONS */
+.section {
+    padding: 2rem;
+}
+
+/* POSTS / COMMENTS / REQUESTS / REELS */
+.post, .comment, .request, .reel {
+    background: white;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    opacity: 0; /* for fade effect */
+    transform: translateY(10px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* FADE-IN CLASS */
+.fade.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* BUTTONS (NAVY BLUE / RED / WHITE) */
+.btn, #theme-toggle {
+    background: #002b5c;
+    color: white;
+    border-radius: 6px;
+    padding: 0.6rem 1rem;
+    border: none;
+}
+
+.btn:hover, #theme-toggle:hover {
+    background: #b30000;
+}
+
+/* FOOTER */
+footer {
+    background: #002b5c;
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+}
