@@ -1,0 +1,114 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IMPERIAL TECHUB</title>  <!-- Royal Blue Theme -->  <style>
+    :root {
+      --royal-blue: #0b1c3d;
+      --royal-blue-light: #132c63;
+      --gold: #f5c542;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: var(--royal-blue);
+      color: var(--white);
+      min-height: 100vh;
+    }
+
+    /* Fade Intro */
+    .intro {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      animation: fadeOut 3s ease forwards;
+    }
+
+    @keyframes fadeOut {
+      0% { opacity: 0; }
+      30% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { opacity: 0; display: none; }
+    }
+
+    /* Main App */
+    .app {
+      display: none;
+      padding: 1rem;
+      animation: fadeIn 1.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-around;
+      background: var(--royal-blue-light);
+      padding: 0.8rem;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+    }
+
+    .nav-btn {
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    .nav-btn:hover {
+      color: var(--gold);
+    }
+
+    /* Card */
+    .card {
+      background: var(--royal-blue-light);
+      padding: 1rem;
+      border-radius: 15px;
+      margin-bottom: 1rem;
+    }
+
+    .title {
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+  </style></head>
+<body>  <!-- Intro Screen -->  <div class="intro" id="intro">IMPERIAL TECHUB</div>  <!-- App -->  <div class="app" id="app"><!-- Navigation -->
+<div class="navbar">
+  <button class="nav-btn">HOME</button>
+  <button class="nav-btn">EVENTS</button>
+  <button class="nav-btn">ANNOUNCEMENTS</button>
+  <button class="nav-btn">CALENDAR</button>
+  <button class="nav-btn">LEADERS</button>
+  <button class="nav-btn">HYMNBOOK</button>
+</div>
+
+<!-- Home Content -->
+<div class="card">
+  <h3 class="title">Fun Fact</h3>
+  <p>Did you know? Hymns were once memorized because books were rare.</p>
+</div>
+
+  </div>  <!-- Script -->  <script>
+    setTimeout(() => {
+      document.getElementById('intro').style.display = 'none';
+      document.getElementById('app').style.display = 'block';
+    }, 3000);
+  </script></body>
+  </html>
