@@ -1,197 +1,120 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>IMPERIAL TECHUB</title>
-
 <style>
-:root {
-  --royal-blue: #081a3a;
-  --royal-blue-light: #102a5c;
-  --card-blue: #142f66;
-  --gold: #f5c542;
-  --white: #ffffff;
-}
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(180deg,#071a3d,#020b1f);
+  color:#fff;
+}#intro{ position:fixed; inset:0; display:flex; justify-content:center; align-items:center; font-size:28px; letter-spacing:2px; background:#020b1f; animation:fadeOut 3s forwards; } @keyframes fadeOut{0%{opacity:1}80%{opacity:1}100%{opacity:0;visibility:hidden}}
 
-* {
-  box-sizing: border-box;
-  font-family: "Segoe UI", Arial, sans-serif;
-}
+#app{display:none;padding:15px}
 
-body {
-  margin: 0;
-  background: linear-gradient(180deg, #071630, #0a2047);
-  color: var(--white);
-  min-height: 100vh;
-}
+h1{text-align:center;color:#ffd54f}
 
-/* INTRO */
-.intro {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2.2rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  animation: introFade 3s forwards;
-}
+.nav{ display:flex; overflow-x:auto; gap:10px; margin-bottom:15px; } .nav button{ background:#0d47a1; border:none; color:#fff; padding:10px 14px; border-radius:20px; white-space:nowrap; }
 
-@keyframes introFade {
-  0% {opacity: 0;}
-  30% {opacity: 1;}
-  85% {opacity: 1;}
-  100% {opacity: 0;}
-}
+.section{display:none}
 
-/* APP */
-.app {
-  display: none;
-  padding: 1rem;
-  animation: appFade 1.2s ease forwards;
-}
+.card{ background:linear-gradient(145deg,#0d47a1,#08306b); border-radius:18px; padding:16px; margin-bottom:15px; box-shadow:0 6px 12px rgba(0,0,0,.4); } .card h3{margin-top:0;color:#ffd54f} .card a{color:#90caf9;text-decoration:none;font-weight:bold}
 
-@keyframes appFade {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
+.calendar{ background:#fff; color:#000; border-radius:12px; padding:10px; }
 
-/* NAVBAR */
-.navbar {
-  display: flex;
-  gap: 10px;
-  overflow-x: auto;
-  padding: 10px;
-  background: var(--royal-blue-light);
-  border-radius: 16px;
-  margin-bottom: 1.2rem;
-}
+input{ width:100%; padding:10px; border-radius:10px; border:none; margin-bottom:10px; }
 
-.navbar::-webkit-scrollbar {
-  display: none;
-}
+.verse{ background:#102a5c; padding:10px; border-radius:10px; margin-bottom:8px; } </style>
 
-.nav-btn {
-  flex: 0 0 auto;
-  padding: 8px 14px;
-  background: rgba(255,255,255,0.08);
-  border: none;
-  border-radius: 12px;
-  color: var(--white);
-  font-size: 0.85rem;
-  cursor: pointer;
-}
-
-.nav-btn:hover {
-  background: rgba(255,255,255,0.15);
-}
-
-/* CONTENT */
-.content {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-/* CARDS */
-.card {
-  background: linear-gradient(145deg, var(--card-blue), #0e2552);
-  border-radius: 18px;
-  padding: 1.2rem;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-}
-
-.card-title {
-  color: var(--gold);
-  font-size: 1.05rem;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-}
-
-.card p {
-  line-height: 1.5;
-  font-size: 0.95rem;
-}
-
-/* BUTTON */
-.btn {
-  display: inline-block;
-  margin-top: 0.8rem;
-  padding: 10px 16px;
-  background: var(--gold);
-  color: #000;
-  font-weight: 600;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-}
-
-.btn:hover {
-  opacity: 0.9;
-}
-
-/* FOOTER SPACE */
-.spacer {
-  height: 40px;
-}
-</style>
 </head>
-
-<body>
-
-<!-- INTRO -->
-<div class="intro" id="intro">IMPERIAL TECHUB</div>
-
-<!-- APP -->
-<div class="app" id="app">
-
-  <!-- NAVIGATION -->
-  <div class="navbar">
-    <button class="nav-btn">HOME</button>
-    <button class="nav-btn">EVENTS</button>
-    <button class="nav-btn">ANNOUNCEMENTS</button>
-    <button class="nav-btn">CALENDAR</button>
-    <button class="nav-btn">LEADERS</button>
-    <button class="nav-btn">HYMNBOOK</button>
+<body><div id="intro">IMPERIAL TECHUB</div><div id="app">
+<h1>IMPERIAL TECHUB</h1><div class="nav">
+<button onclick="show('home')">HOME</button>
+<button onclick="show('events')">EVENTS</button>
+<button onclick="show('announcements')">ANNOUNCEMENTS</button>
+<button onclick="show('calendar')">CALENDAR</button>
+<button onclick="show('leaders')">LEADERS</button>
+<button onclick="show('hymnbook')">HYMNBOOK</button>
+<button onclick="show('bible')">BIBLE</button>
+</div><div class="section" id="home">
+  <div class="card">
+    <h3>📘 Fun Fact</h3>
+    <p>Did you know? Hymns were memorized because books were once very rare.</p>
+  </div>  <div class="card">
+    <h3>🤖 Bible AI Assistant</h3>
+    <p>Tap below to open our Bible helper.</p>
+    <a href="https://m.me/24989022474133419?is_ai=1" target="_blank">Open AI Assistant →</a>
   </div>
-
-  <!-- CONTENT -->
-  <div class="content">
-
-    <!-- FUN FACT CARD -->
-    <div class="card">
-      <div class="card-title">📘 Fun Fact</div>
-      <p>
-        Did you know? Many hymns were memorized word for word because printed
-        books were rare and expensive in early church history.
-      </p>
-    </div>
-
-    <!-- AI BIBLE STUDY CARD -->
-    <div class="card">
-      <div class="card-title">🤖 Bible Study Assistant</div>
-      <p>
-        Ask questions about scripture, understand Bible verses,
-        and grow spiritually using our AI-powered Bible study assistant.
-      </p>
-      <button class="btn"
-        onclick="window.open('https://m.me/853714904186621?is_ai=1','_blank')">
-        Open Bible Study AI
-      </button>
-    </div>
-
+</div><div class="section" id="events">
+  <div class="card">
+    <h3>⏳ Upcoming Events</h3>
+    <p>Youth Rally – 12 days remaining</p>
+    <p>Presbytery Convention – 34 days remaining</p>
   </div>
+</div><div class="section" id="announcements">
+  <div class="card">
+    <h3>📢 Presbytery Convention</h3>
+    <p>A gathering of youths from all regions for worship, leadership training and fellowship.</p>
+  </div>
+  <div class="card">
+    <h3>🔥 Youth Rally</h3>
+    <p>A powerful rally focused on faith, unity and spiritual growth.</p>
+  </div>
+</div><div class="section" id="calendar">
+  <div class="card">
+    <h3>📅 Gregorian Calendar</h3>
+    <div class="calendar">
+      <input type="date" />
+    </div>
+  </div>
+</div><div class="section" id="leaders">
+  <div class="card">
+    <h3>👥 Leaders</h3>
+    <p>Zachary Gikonyo – Chairperson</p>
+    <p>Dalson Maina – Vice Chairperson</p>
+    <p>Ian Gathagu – Secretary</p>
+    <p>Lydia Wamuyu – Vice Secretary</p>
+    <p>Winnie Maundu – Treasurer</p>
+    <a href="https://whatsapp.com/channel/0029VbAreot60eBWPwDZTl1p" target="_blank">Open Youth Channel →</a>
+  </div>
+</div><div class="section" id="hymnbook">
+  <div class="card">
+    <h3>🎵 Hymnbook</h3>
+    <input placeholder="Search hymn by any line…" oninput="searchHymn(this.value)" />
+    <div id="hymns"></div>
+  </div>
+</div><div class="section" id="bible">
+  <div class="card">
+    <h3>📖 Full Bible (Sample)</h3>
+    <div class="verse">John 3:16 – For God so loved the world…</div>
+    <div class="verse">Psalm 23:1 – The Lord is my shepherd…</div>
+  </div>
+</div></div><script>
+const hymns=[
+{title:"Amazing Grace",text:"Amazing grace how sweet the sound"},
+{title:"Blessed Assurance",text:"Blessed assurance Jesus is mine"},
+{title:"How Great Thou Art",text:"O Lord my God when I in awesome wonder"}
+];
 
-  <div class="spacer"></div>
-</div>
+function show(id){
+  document.querySelectorAll('.section').forEach(s=>s.style.display='none');
+  document.getElementById(id).style.display='block';
+}
 
-<script>
-setTimeout(() => {
-  document.getElementById("intro").style.display = "none";
-  document.getElementById("app").style.display = "block";
-}, 3000);
-</script>
+function searchHymn(q){
+  const box=document.getElementById('hymns');
+  box.innerHTML='';
+  hymns.filter(h=>h.text.toLowerCase().includes(q.toLowerCase()))
+  .forEach(h=>{
+    box.innerHTML+=`<div class='verse'><b>${h.title}</b><br>${h.text}</div>`;
+  });
+}
 
-</body>
-      </html>
+setTimeout(()=>{
+  document.getElementById('intro').style.display='none';
+  document.getElementById('app').style.display='block';
+  show('home');
+},3000);
+</script></body>
+</html>
