@@ -29,7 +29,8 @@ input{ width:100%; padding:10px; border-radius:10px; border:none; margin-bottom:
 
 </head>
 <body><div id="intro">IMPERIAL TECHUB</div><div id="app">
-<h1>IMPERIAL TECHUB</h1><div class="nav">
+<h1>IMPERIAL TECHUB</h1>
+<button id="themeToggle" style="position:fixed;top:10px;right:10px;border-radius:20px;padding:6px 10px;border:none">🌗</button><div class="nav">
 <button onclick="show('home')">HOME</button>
 <button onclick="show('events')">EVENTS</button>
 <button onclick="show('announcements')">ANNOUNCEMENTS</button>
@@ -49,9 +50,10 @@ input{ width:100%; padding:10px; border-radius:10px; border:none; margin-bottom:
 </div><div class="section" id="events">
   <div class="card">
     <h3>⏳ Upcoming Events</h3>
-    <p>Youth Rally – 12 days remaining</p>
-    <p>Presbytery Convention – 34 days remaining</p>
+    <p>Youth Rally – <span id="yr"></span></p>
+    <p>Presbytery Convention – <span id="pc"></span></p>
   </div>
+</div>
 </div><div class="section" id="announcements">
   <div class="card">
     <h3>📢 Presbytery Convention</h3>
@@ -96,14 +98,53 @@ input{ width:100%; padding:10px; border-radius:10px; border:none; margin-bottom:
     <h3>🎵 Hymnbook</h3>
     <input placeholder="Search hymn by any line…" oninput="searchHymn(this.value)" />
     <div id="hymns"></div>
+  </div>  <div class="card">
+    <h3>🔔 Golden Bells Hymnal</h3>
+    <p>Historic Golden Bells hymns collection.</p>
+    <a href="https://hymnary.org/hymnal/GB1923" target="_blank">Open Golden Bells →</a>
+  </div>
+</div>
   </div>
 </div><div class="section" id="bible">
+  <div class="card">
+    <h3>🔍 Search Bible</h3>
+    <input placeholder="Search a verse…" oninput="searchBible(this.value)" />
+    <div id="bibleResults"></div>
+  </div>
   <div class="card">
     <h3>📖 Full Bible (Sample)</h3>
     <div class="verse">John 3:16 – For God so loved the world…</div>
     <div class="verse">Psalm 23:1 – The Lord is my shepherd…</div>
+  </div>  <div class="card">
+    <h3>🌐 Online Bible</h3>
+    <p>Access the full King James Bible online.</p>
+    <a href="https://m.kingjamesbibleonline.org/" target="_blank">Open King James Bible →</a>
+  </div>
+</div>
+    <div class="verse">Psalm 23:1 – The Lord is my shepherd…</div>
   </div>
 </div></div><script>
+// THEME TOGGLE
+const btn=document.getElementById('themeToggle');
+btn.onclick=()=>{document.body.classList.toggle('light');localStorage.theme=document.body.classList.contains('light')?'light':'dark'};
+if(localStorage.theme==='light')document.body.classList.add('light');
+
+// COUNTDOWNS
+const yrd=new Date('2026-01-20');
+const pcd=new Date('2026-03-15');
+function cd(d){const t=d-new Date();return Math.max(0,Math.floor(t/86400000))+' days';}
+setInterval(()=>{document.getElementById('yr').textContent=cd(yrd);document.getElementById('pc').textContent=cd(pcd)},1000);
+
+// BIBLE SEARCH (sample)
+const verses=['John 3:16 For God so loved the world','Psalm 23:1 The Lord is my shepherd'];
+function searchBible(q){const r=document.getElementById('bibleResults');r.innerHTML='';verses.filter(v=>v.toLowerCase().includes(q.toLowerCase())).forEach(v=>r.innerHTML+=`<div class="verse">${v}</div>`)}
+
+// ADMIN LOCK
+function adminEdit(){const p=prompt('Admin password');if(p==='admin123'){alert('Edit mode enabled');}}
+
+// OFFLINE CACHE (basic)
+if('serviceWorker'in navigator){const code=`self.addEventListener('install',e=>{e.waitUntil(caches.open('it').then(c=>c.addAll(['./'])))});self.addEventListener('fetch',e=>{e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request)))})`;navigator.serviceWorker.register(URL.createObjectURL(new Blob([code],{type:'text/javascript'})));}
+
 const hymns=[
 {title:"Amazing Grace",text:"Amazing grace how sweet the sound"},
 {title:"Blessed Assurance",text:"Blessed assurance Jesus is mine"},
@@ -130,4 +171,4 @@ setTimeout(()=>{
   show('home');
 },3000);
 </script></body>
-    </html>
+</html>
