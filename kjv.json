@@ -1,0 +1,52 @@
+<!-- BIBLE SECTION FULLY INTEGRATED --><div class="section" id="bible">
+  <div class="card">
+    <h3>📖 Full Bible Search</h3>
+    <input id="bibleSearch" placeholder="Type any line or keyword..." />
+    <div id="bibleResults"></div>
+    <div id="chapterView" style="margin-top:15px;"></div>
+  </div>
+</div><script>
+// LOAD FULL KJV JSON
+let bibleData = {};
+fetch('kjv.json') // Place your local JSON Bible file path here
+  .then(res => res.json())
+  .then(data => { bibleData = data; });
+
+// SEARCH FUNCTIONALITY
+document.getElementById('bibleSearch').addEventListener('input', function() {
+  const query = this.value.toLowerCase();
+  const resultsDiv = document.getElementById('bibleResults');
+  resultsDiv.innerHTML = '';
+  if(!query) return;
+
+  Object.keys(bibleData).forEach(book => {
+    const chapters = bibleData[book];
+    Object.keys(chapters).forEach(chNum => {
+      const verses = chapters[chNum];
+      Object.keys(verses).forEach(vNum => {
+        const verseText = verses[vNum];
+        if(verseText.toLowerCase().includes(query)){
+          const res = document.createElement('div');
+          res.className = 'verse';
+          res.innerHTML = `<b>${book} ${chNum}:${vNum}</b> — ${verseText} <a href='#' onclick="showChapter('${book}', ${chNum});return false;">View Chapter</a>`;
+          resultsDiv.appendChild(res);
+        }
+      });
+    });
+  });
+  document.getElementById('chapterView').innerHTML = '';
+});
+
+// SHOW FULL CHAPTER
+function showChapter(book, chapterNum){
+  const chapterDiv = document.getElementById('chapterView');
+  chapterDiv.innerHTML = `<h4>${book} Chapter ${chapterNum}</h4>`;
+  const verses = bibleData[book][chapterNum];
+  Object.keys(verses).forEach(vNum => {
+    const v = document.createElement('div');
+    v.className = 'verse';
+    v.textContent = `${vNum} — ${verses[vNum]}`;
+    chapterDiv.appendChild(v);
+  });
+}
+</script>
