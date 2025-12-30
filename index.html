@@ -9,28 +9,39 @@ body{
   font-family: Arial, sans-serif;
   background: linear-gradient(180deg,#071a3d,#020b1f);
   color:#fff;
-}#intro{ position:fixed; inset:0; display:flex; justify-content:center; align-items:center; font-size:28px; letter-spacing:2px; background:#020b1f; animation:fadeOut 3s forwards; } @keyframes fadeOut{0%{opacity:1}80%{opacity:1}100%{opacity:0;visibility:hidden}}
-
+}
+#intro{
+  position:fixed;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:28px;
+  letter-spacing:2px;
+  background:#020b1f;
+  animation:fadeOut 3s forwards;
+}
+@keyframes fadeOut{0%{opacity:1}80%{opacity:1}100%{opacity:0;visibility:hidden}}
 #app{display:none;padding:15px}
-
 h1{text-align:center;color:#ffd54f}
-
-.nav{ display:flex; overflow-x:auto; gap:10px; margin-bottom:15px; } .nav button{ background:#0d47a1; border:none; color:#fff; padding:10px 14px; border-radius:20px; white-space:nowrap; }
-
+.nav{display:flex;overflow-x:auto;gap:10px;margin-bottom:15px;}
+.nav button{background:#0d47a1;border:none;color:#fff;padding:10px 14px;border-radius:20px;white-space:nowrap;}
 .section{display:none}
-
-.card{ background:linear-gradient(145deg,#0d47a1,#08306b); border-radius:18px; padding:16px; margin-bottom:15px; box-shadow:0 6px 12px rgba(0,0,0,.4); } .card h3{margin-top:0;color:#ffd54f} .card a{color:#90caf9;text-decoration:none;font-weight:bold}
-
-.calendar{ background:#fff; color:#000; border-radius:12px; padding:10px; }
-
-input{ width:100%; padding:10px; border-radius:10px; border:none; margin-bottom:10px; }
-
-.verse{ background:#102a5c; padding:10px; border-radius:10px; margin-bottom:8px; } </style>
-
+.card{background:linear-gradient(145deg,#0d47a1,#08306b);border-radius:18px;padding:16px;margin-bottom:15px;box-shadow:0 6px 12px rgba(0,0,0,.4);}
+.card h3{margin-top:0;color:#ffd54f}
+.card a{color:#90caf9;text-decoration:none;font-weight:bold}
+.calendar{background:#fff;color:#000;border-radius:12px;padding:10px;}
+input{width:100%;padding:10px;border-radius:10px;border:none;margin-bottom:10px;}
+.verse{background:#102a5c;padding:10px;border-radius:10px;margin-bottom:8px;}
+.light{background:#f0f0f0;color:#000;}
+</style>
 </head>
-<body><div id="intro">IMPERIAL TECHUB</div><div id="app">
+<body>
+<div id="intro">IMPERIAL TECHUB</div>
+<div id="app">
 <h1>IMPERIAL TECHUB</h1>
-<button id="themeToggle" style="position:fixed;top:10px;right:10px;border-radius:20px;padding:6px 10px;border:none">🌗</button><div class="nav">
+<button id="themeToggle" style="position:fixed;top:10px;right:10px;border-radius:20px;padding:6px 10px;border:none">🌗</button>
+<div class="nav">
 <button onclick="show('home')">HOME</button>
 <button onclick="show('events')">EVENTS</button>
 <button onclick="show('announcements')">ANNOUNCEMENTS</button>
@@ -38,23 +49,26 @@ input{ width:100%; padding:10px; border-radius:10px; border:none; margin-bottom:
 <button onclick="show('leaders')">LEADERS</button>
 <button onclick="show('hymnbook')">HYMNBOOK</button>
 <button onclick="show('bible')">BIBLE</button>
-</div><div class="section" id="home">
+</div>
+<div class="section" id="home">
   <div class="card">
     <h3>📘 Fun Fact</h3>
     <p>Did you know? Hymns were memorized because books were once very rare.</p>
-  </div>  <div class="card">
+  </div>
+  <div class="card">
     <h3>🤖 Bible AI Assistant</h3>
     <p>Tap below to open our Bible helper.</p>
     <a href="https://m.me/24989022474133419?is_ai=1" target="_blank">Open AI Assistant →</a>
   </div>
-</div><div class="section" id="events">
+</div>
+<div class="section" id="events">
   <div class="card">
     <h3>⏳ Upcoming Events</h3>
     <p>Youth Rally – <span id="yr"></span></p>
     <p>Presbytery Convention – <span id="pc"></span></p>
   </div>
 </div>
-</div><div class="section" id="announcements">
+<div class="section" id="announcements">
   <div class="card">
     <h3>📢 Presbytery Convention</h3>
     <p>A gathering of youths from all regions for worship, leadership training and fellowship.</p>
@@ -63,112 +77,76 @@ input{ width:100%; padding:10px; border-radius:10px; border:none; margin-bottom:
     <h3>🔥 Youth Rally</h3>
     <p>A powerful rally focused on faith, unity and spiritual growth.</p>
   </div>
-</div><div class="section" id="calendar">
+</div>
+<div class="section" id="calendar">
   <div class="card">
     <h3>📅 Gregorian Calendar</h3>
     <div class="calendar">
       <input type="date" />
     </div>
   </div>
-</div><div class="section" id="leaders">
+</div>
+<div class="section" id="leaders">
   <div class="card">
-    <h3>👥 Leaders</h3><p><b>Zachary Gikonyo</b> – Chairperson<br>
-<a href="https://wa.me/254742892647" target="_blank">Chat on WhatsApp →</a></p>
-
-<p><b>Dalson Maina</b> – Vice Chairperson<br>
-<a href="https://wa.me/254102695422" target="_blank">Chat on WhatsApp →</a></p>
-
-<p><b>Ian Gathagu</b> – Secretary<br>
-<a href="https://wa.me/254718357417" target="_blank">Chat on WhatsApp →</a></p>
-
-<p><b>Lydia Wamuyu</b> – Vice Secretary<br>
-<a href="https://wa.me/254110867929" target="_blank">Chat on WhatsApp →</a></p>
-
-<p><b>Winnie Maundu</b> – Treasurer<br>
-<a href="https://wa.me/254713285534" target="_blank">Chat on WhatsApp →</a></p>
-
-<hr>
-<a href="https://whatsapp.com/channel/0029VbAreot60eBWPwDZTl1p" target="_blank">
-  Open PCEA Center Youth Channel →
-</a>
-
+    <h3>👥 Leaders</h3>
+    <p><b>Zachary Gikonyo</b> – Chairperson<br><a href="https://wa.me/254742892647" target="_blank">Chat on WhatsApp →</a></p>
+    <p><b>Dalson Maina</b> – Vice Chairperson<br><a href="https://wa.me/254102695422" target="_blank">Chat on WhatsApp →</a></p>
+    <p><b>Ian Gathagu</b> – Secretary<br><a href="https://wa.me/254718357417" target="_blank">Chat on WhatsApp →</a></p>
+    <p><b>Lydia Wamuyu</b> – Vice Secretary<br><a href="https://wa.me/254110867929" target="_blank">Chat on WhatsApp →</a></p>
+    <p><b>Winnie Maundu</b> – Treasurer<br><a href="https://wa.me/254713285534" target="_blank">Chat on WhatsApp →</a></p>
+    <hr>
+    <a href="https://whatsapp.com/channel/0029VbAreot60eBWPwDZTl1p" target="_blank">Open PCEA Center Youth Channel →</a>
   </div>
-</div><div class="section" id="hymnbook">
+</div>
+<div class="section" id="hymnbook">
   <div class="card">
     <h3>🎵 Hymnbook</h3>
     <input placeholder="Search hymn by any line…" oninput="searchHymn(this.value)" />
     <div id="hymns"></div>
-  </div>  <div class="card">
+  </div>
+  <div class="card">
     <h3>🔔 Golden Bells Hymnal</h3>
     <p>Historic Golden Bells hymns collection.</p>
     <a href="https://hymnary.org/hymnal/GB1923" target="_blank">Open Golden Bells →</a>
   </div>
 </div>
+<div class="section" id="bible">
+  <div class="card">
+    <h3>📖 Full Bible (Sample)</h3>
+    <div class="verse">John 3:16 – For God so loved the world…</div>
+    <div class="verse">Psalm 23:1 – The Lord is my shepherd…</div>
   </div>
-</div><div class="section" id="bible">
+  <div class="card">
+    <h3>🌐 Online Bible</h3>
+    <p>Access the full King James Bible online.</p>
+    <a href="https://m.kingjamesbibleonline.org/" target="_blank">Open King James Bible →</a>
+  </div>
   <div class="card">
     <h3>🔍 Search Bible</h3>
     <input placeholder="Search a verse…" oninput="searchBible(this.value)" />
     <div id="bibleResults"></div>
   </div>
-  <div class="card">
-    <h3>📖 Full Bible (Sample)</h3>
-    <div class="verse">John 3:16 – For God so loved the world…</div>
-    <div class="verse">Psalm 23:1 – The Lord is my shepherd…</div>
-  </div>  <div class="card">
-    <h3>🌐 Online Bible</h3>
-    <p>Access the full King James Bible online.</p>
-    <a href="https://m.kingjamesbibleonline.org/" target="_blank">Open King James Bible →</a>
-  </div>
 </div>
-    <div class="verse">Psalm 23:1 – The Lord is my shepherd…</div>
-  </div>
-</div></div><script>
-// THEME TOGGLE
-const btn=document.getElementById('themeToggle');
-btn.onclick=()=>{document.body.classList.toggle('light');localStorage.theme=document.body.classList.contains('light')?'light':'dark'};
-if(localStorage.theme==='light')document.body.classList.add('light');
-
-// COUNTDOWNS
-const yrd=new Date('2026-01-20');
-const pcd=new Date('2026-03-15');
-function cd(d){const t=d-new Date();return Math.max(0,Math.floor(t/86400000))+' days';}
-setInterval(()=>{document.getElementById('yr').textContent=cd(yrd);document.getElementById('pc').textContent=cd(pcd)},1000);
-
-// BIBLE SEARCH (sample)
-const verses=['John 3:16 For God so loved the world','Psalm 23:1 The Lord is my shepherd'];
-function searchBible(q){const r=document.getElementById('bibleResults');r.innerHTML='';verses.filter(v=>v.toLowerCase().includes(q.toLowerCase())).forEach(v=>r.innerHTML+=`<div class="verse">${v}</div>`)}
-
-// ADMIN LOCK
-function adminEdit(){const p=prompt('Admin password');if(p==='admin123'){alert('Edit mode enabled');}}
-
-// OFFLINE CACHE (basic)
-if('serviceWorker'in navigator){const code=`self.addEventListener('install',e=>{e.waitUntil(caches.open('it').then(c=>c.addAll(['./'])))});self.addEventListener('fetch',e=>{e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request)))})`;navigator.serviceWorker.register(URL.createObjectURL(new Blob([code],{type:'text/javascript'})));}
-
+<p style="text-align:center;margin-top:20px;color:#90caf9;">v1.1.0 created for the youths by Gathagu Ian</p>
+</div>
+<script>
 const hymns=[
 {title:"Amazing Grace",text:"Amazing grace how sweet the sound"},
 {title:"Blessed Assurance",text:"Blessed assurance Jesus is mine"},
 {title:"How Great Thou Art",text:"O Lord my God when I in awesome wonder"}
 ];
-
-function show(id){
-  document.querySelectorAll('.section').forEach(s=>s.style.display='none');
-  document.getElementById(id).style.display='block';
-}
-
-function searchHymn(q){
-  const box=document.getElementById('hymns');
-  box.innerHTML='';
-  hymns.filter(h=>h.text.toLowerCase().includes(q.toLowerCase()))
-  .forEach(h=>{
-    box.innerHTML+=`<div class='verse'><b>${h.title}</b><br>${h.text}</div>`;
-  });
-}
-
-setTimeout(()=>{
-  document.getElementById('intro').style.display='none';
-  document.getElementById('app').style.display='block';
-  show('home');
-},3000);
-</script></body>
+function show(id){document.querySelectorAll('.section').forEach(s=>s.style.display='none');document.getElementById(id).style.display='block';}
+function searchHymn(q){const box=document.getElementById('hymns');box.innerHTML='';hymns.filter(h=>h.text.toLowerCase().includes(q.toLowerCase())).forEach(h=>{box.innerHTML+=`<div class='verse'><b>${h.title}</b><br>${h.text}</div>`});}
+const btn=document.getElementById('themeToggle');btn.onclick=()=>{document.body.classList.toggle('light');localStorage.theme=document.body.classList.contains('light')?'light':'dark'};if(localStorage.theme==='light')document.body.classList.add('light');
+const yrd=new Date('2026-01-20');
+const pcd=new Date('2026-03-15');
+function cd(d){const t=d-new Date();return Math.max(0,Math.floor(t/86400000))+' days';}
+setInterval(()=>{document.getElementById('yr').textContent=cd(yrd);document.getElementById('pc').textContent=cd(pcd)},1000);
+const verses=['John 3:16 For God so loved the world','Psalm 23:1 The Lord is my shepherd'];
+function searchBible(q){const r=document.getElementById('bibleResults');r.innerHTML='';verses.filter(v=>v.toLowerCase().includes(q.toLowerCase())).forEach(v=>r.innerHTML+=`<div class="verse">${v}</div>`)}
+function adminEdit(){const p=prompt('Admin password');if(p==='admin123'){alert('Edit mode enabled');}}
+if('serviceWorker'in navigator){const code=`self.addEventListener('install',e=>{e.waitUntil(caches.open('it').then(c=>c.addAll(['./'])))});self.addEventListener('fetch',e=>{e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request)))})`;navigator.serviceWorker.register(URL.createObjectURL(new Blob([code],{type:'text/javascript'})));}
+setTimeout(()=>{document.getElementById('intro').style.display='none';document.getElementById('app').style.display='block';show('home');},3000);
+</script>
+</body>
 </html>
