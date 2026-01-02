@@ -4,33 +4,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IMPERIAL TECHUB</title>
 <style>
-  body { font-family: Arial, sans-serif; margin:0; padding:0; background:#0d1b3a; color:#fff; }
-  header { text-align:center; padding:20px; font-size:2rem; font-weight:bold; color:#FFD700; }
-  nav { display:flex; justify-content:center; gap:10px; margin-bottom:20px; }
-  nav button { background:#1e3c72; border:none; padding:10px 15px; border-radius:8px; color:#fff; cursor:pointer; transition:all 0.2s; }
-  nav button:hover { background:#2a5298; transform:scale(1.05); }
-  .section { display:none; padding:0 20px; }
-  .active { display:block; }
-  .cards-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:15px; }
-  .card { background: linear-gradient(135deg,#1e3c72,#2a5298); padding:20px; border-radius:15px; text-align:center; transition:transform 0.2s, box-shadow 0.2s; }
-  .card:hover { transform:scale(1.05); box-shadow:0 5px 15px rgba(0,0,0,0.3); }
-  .card h3 { margin:0 0 10px; font-size:1.1rem; color:#FFD700; }
-  .card p { margin:0; line-height:1.4; }
-  input.search { width:100%; padding:10px; border-radius:10px; border:none; margin-top:10px; font-size:1rem; }
-  button.amen { margin-top:10px; background:#FFD700; color:#1e3c72; padding:8px 15px; border:none; border-radius:8px; cursor:pointer; transition:all 0.2s; }
-  button.amen:hover { background:#ffec99; }
-  footer { text-align:center; padding:15px; font-size:0.9rem; color:#ccc; }
-  a { color:#FFD700; text-decoration:none; }
-</style>
+  body { font-family: 'Arial', sans-serif; margin:0; padding:0; background:#0d1b3a; color:#fff; }
+  header { display:none; }/* ---------------- Bottom Nav ---------------- */ nav.bottom-nav { position:fixed; bottom:0; left:0; right:0; display:flex; justify-content:space-around; background:#1e3c72; padding:10px 0; z-index:999; border-top-left-radius:15px; border-top-right-radius:15px; } nav.bottom-nav button { background:none; border:none; color:#fff; font-size:1.2rem; display:flex; flex-direction:column; align-items:center; cursor:pointer; transition:0.2s; } nav.bottom-nav button.active { color:#FFD700; }
+
+/* ---------------- Sections ---------------- */ .section { display:none; padding:70px 15px 80px 15px; } .active { display:block; }
+
+/* ---------------- Cards ---------------- */ .cards-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:15px; } .card { background: linear-gradient(135deg,#FF5EDF,#04C8DE); padding:20px; border-radius:20px; text-align:center; transition:transform 0.2s, box-shadow 0.2s; cursor:pointer; } .card:hover { transform:scale(1.05); box-shadow:0 5px 15px rgba(0,0,0,0.5); } .card h3 { margin:0 0 10px; font-size:1.1rem; color:#fff; } .card p { margin:0; line-height:1.4; color:#fff; }
+
+/* ---------------- Inputs ---------------- */ input.search { width:100%; padding:10px; border-radius:10px; border:none; margin-top:10px; font-size:1rem; }
+
+/* ---------------- Prayer ---------------- */ .prayer-card { background: linear-gradient(135deg,#f7971e,#ffd200); color:#0d1b3a; } button.amen { margin-top:10px; background:#ff4e50; color:#fff; padding:8px 15px; border:none; border-radius:8px; cursor:pointer; transition:0.2s; } button.amen:hover { background:#ff8a50; }
+
+/* ---------------- Chat ---------------- */ .chat-box { background:#1e3c72; padding:15px; border-radius:15px; height:400px; overflow-y:auto; margin-bottom:10px; } .chat-message { padding:8px 12px; border-radius:12px; margin-bottom:5px; max-width:80%; } .chat-message.user { background:#FFD700; color:#0d1b3a; margin-left:auto; } .chat-message.other { background:#04C8DE; color:#0d1b3a; margin-right:auto; } .chat-input { display:flex; gap:5px; } .chat-input input { flex:1; padding:10px; border-radius:12px; border:none; } .chat-input button { padding:10px 15px; border:none; border-radius:12px; background:#FFD700; color:#0d1b3a; cursor:pointer; transition:0.2s; } .chat-input button:hover { background:#ffec99; }
+
+footer { text-align:center; padding:15px; font-size:0.9rem; color:#ccc; margin-top:20px; } </style>
+
 </head>
-<body>
-<header>IMPERIAL TECHUB</header>
-<nav>
-  <button onclick="showSection('home')">HOME</button>
-  <button onclick="showSection('bible')">BIBLE</button>
-  <button onclick="showSection('hymn')">HYMNBOOK</button>
-  <button onclick="showSection('prayer')">PRAYER</button>
-</nav><!-- ================= HOME ================= --><div class="section active" id="home">
+<body><!-- ================= HOME ================= --><div class="section active" id="home">
   <div class="cards-grid">
     <div class="card">
       <h3>📖 Bible</h3>
@@ -45,8 +35,8 @@
       <p>Daily prayer updated automatically every day at 12:00 AM.</p>
     </div>
     <div class="card">
-      <h3>📅 Fun Fact</h3>
-      <p>Did you know? Hymns were once memorized because books were rare.</p>
+      <h3>📸 Reels & Posts</h3>
+      <p>Short spiritual clips & inspirational posts for youths.</p>
     </div>
   </div>
 </div><!-- ================= BIBLE ================= --><div class="section" id="bible">
@@ -70,14 +60,27 @@
     <button class="amen" onclick="countAmen()">🙏 Amen</button>
     <p id="amenCount">Amen count: 0</p>
   </div>
-</div><footer>v1.1.0 created for the youths by Gathagu Ian</footer><script>
-// ==================== SECTION SWITCH ====================
-function showSection(id){
+</div><!-- ================= CHAT ================= --><div class="section" id="chat">
+  <div class="card">
+    <h3>💬 Youth Chat</h3>
+    <div class="chat-box" id="chatBox"></div>
+    <div class="chat-input">
+      <input type="text" id="chatInput" placeholder="Type a message...">
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+</div><!-- ================= FOOTER ================= --><footer>v1.1.0 created for the youths by Gathagu Ian</footer><script>
+// ---------------- Bottom Nav ----------------
+const navButtons = document.querySelectorAll('nav.bottom-nav button');
+navButtons.forEach(btn => btn.addEventListener('click', () => {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  const id = btn.textContent.toLowerCase();
   document.getElementById(id).classList.add('active');
-}
+  navButtons.forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}));
 
-// ==================== PRAYER OF THE DAY ====================
+// ---------------- PRAYER OF THE DAY ----------------
 const prayers = [
   "Lord, guide my steps today and help me walk in Your wisdom.",
   "Father God, renew my strength and restore my joy.",
@@ -87,12 +90,10 @@ const prayers = [
   "Lord, help me trust You even when I don’t understand.",
   "God, draw me closer to You today."
 ];
-
 function getPrayerOfTheDay(){
   const today = new Date().toDateString();
   const savedDate = localStorage.getItem('prayerDate');
   let used = JSON.parse(localStorage.getItem('usedPrayers')) || [];
-
   if(savedDate !== today){
     if(used.length === prayers.length) used = [];
     let available = prayers.filter(p => !used.includes(p));
@@ -106,7 +107,6 @@ function getPrayerOfTheDay(){
 }
 getPrayerOfTheDay();
 
-// Amen counter
 function countAmen(){
   let count = parseInt(localStorage.getItem('amenCount')) || 0;
   count++;
@@ -115,27 +115,53 @@ function countAmen(){
 }
 if(localStorage.getItem('amenCount')) document.getElementById('amenCount').innerText = 'Amen count: ' + localStorage.getItem('amenCount');
 
-// ==================== BIBLE SEARCH ====================
-const bibleSample = [
-  "John 3:16 – For God so loved the world...",
-  "Psalm 23:1 – The Lord is my shepherd..."
-];
+// ---------------- BIBLE SEARCH ----------------
+const bibleSample = ["John 3:16 – For God so loved the world...","Psalm 23:1 – The Lord is my shepherd..."];
 function searchBible(){
   const q = document.getElementById('bibleSearch').value.toLowerCase();
   const res = bibleSample.filter(v=>v.toLowerCase().includes(q));
   document.getElementById('bibleResults').innerHTML = res.map(v=>'<p>'+v+'</p>').join('');
 }
 
-// ==================== HYMN SEARCH ====================
-const hymns = [
-  "Amazing Grace",
-  "Holy, Holy, Holy",
-  "Great is Thy Faithfulness"
-];
+// ---------------- HYMN SEARCH ----------------
+const hymns = ["Amazing Grace","Holy, Holy, Holy","Great is Thy Faithfulness"];
 function searchHymn(){
   const q = document.getElementById('hymnSearch').value.toLowerCase();
   const res = hymns.filter(h=>h.toLowerCase().includes(q));
   document.getElementById('hymnResults').innerHTML = res.map(h=>'<p>'+h+'</p>').join('');
 }
-</script></body>
-                                                                                                                            </html>
+
+// ---------------- CHAT ----------------
+function sendMessage(){
+  const input = document.getElementById('chatInput');
+  const msg = input.value.trim();
+  if(msg==='') return;
+  const chatBox = document.getElementById('chatBox');
+  const p = document.createElement('div');
+  p.classList.add('chat-message','user');
+  p.textContent = msg;
+  chatBox.appendChild(p);
+  input.value='';
+  chatBox.scrollTop = chatBox.scrollHeight;
+  // save chat
+  let chatLog = JSON.parse(localStorage.getItem('chatLog')) || [];
+  chatLog.push({user:'You',msg:msg});
+  localStorage.setItem('chatLog', JSON.stringify(chatLog));
+}
+// load chat on start
+let chatLog = JSON.parse(localStorage.getItem('chatLog')) || [];
+const chatBox = document.getElementById('chatBox');
+chatLog.forEach(c=>{
+  const p = document.createElement('div');
+  p.classList.add('chat-message','user');
+  p.textContent = c.msg;
+  chatBox.appendChild(p);
+});
+</script><nav class="bottom-nav">
+  <button class="active">Home</button>
+  <button>Bible</button>
+  <button>Hymn</button>
+  <button>Prayer</button>
+  <button>Chat</button>
+</nav></body>
+      </html>
