@@ -4,41 +4,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IMPERIAL TECHUB</title>
 <style>
-  body { font-family: 'Arial', sans-serif; margin:0; padding:0; background:#0d1b3a; color:#fff; }
-  header { display:none; }/* ---------------- Bottom Nav ---------------- */ nav.bottom-nav { position:fixed; bottom:0; left:0; right:0; display:flex; justify-content:space-around; background:#1e3c72; padding:10px 0; z-index:999; border-top-left-radius:15px; border-top-right-radius:15px; } nav.bottom-nav button { background:none; border:none; color:#fff; font-size:1.2rem; display:flex; flex-direction:column; align-items:center; cursor:pointer; transition:0.2s; } nav.bottom-nav button.active { color:#FFD700; }
+  body { font-family: Arial, sans-serif; margin:0; padding:0; background:#0d1b3a; color:#fff; }/* ---------------- Bottom Nav ---------------- */ nav.bottom-nav { position:fixed; bottom:0; left:0; right:0; display:flex; justify-content:space-around; background:#1e3c72; padding:10px 0; z-index:999; border-top-left-radius:15px; border-top-right-radius:15px; } nav.bottom-nav button { background:none; border:none; color:#fff; font-size:1.2rem; display:flex; flex-direction:column; align-items:center; cursor:pointer; transition:0.2s; } nav.bottom-nav button.active { color:#FFD700; }
 
 /* ---------------- Sections ---------------- */ .section { display:none; padding:70px 15px 80px 15px; } .active { display:block; }
 
-/* ---------------- Cards ---------------- */ .cards-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:15px; } .card { background: linear-gradient(135deg,#FF5EDF,#04C8DE); padding:20px; border-radius:20px; text-align:center; transition:transform 0.2s, box-shadow 0.2s; cursor:pointer; } .card:hover { transform:scale(1.05); box-shadow:0 5px 15px rgba(0,0,0,0.5); } .card h3 { margin:0 0 10px; font-size:1.1rem; color:#fff; } .card p { margin:0; line-height:1.4; color:#fff; }
+/* ---------------- Reels ---------------- */ .reel-feed { display:flex; flex-direction:column; gap:15px; overflow-y:auto; max-height:calc(100vh - 80px); padding-bottom:80px; } .reel-card { background: linear-gradient(135deg,#FF5EDF,#04C8DE); border-radius:20px; padding:20px; font-size:1.2rem; text-align:center; color:#fff; position:relative; transition:transform 0.2s; } .reel-card:hover { transform:scale(1.02); } .reel-card button { position:absolute; bottom:15px; right:15px; background:#FFD700; border:none; padding:8px 12px; border-radius:12px; cursor:pointer; color:#0d1b3a; }
 
-/* ---------------- Inputs ---------------- */ input.search { width:100%; padding:10px; border-radius:10px; border:none; margin-top:10px; font-size:1rem; }
+/* ---------------- Inputs ---------------- */ input.search, input.reelInput { width:100%; padding:10px; border-radius:10px; border:none; margin-top:10px; font-size:1rem; } button.uploadReel { margin-top:10px; background:#ff4e50; color:#fff; padding:8px 15px; border:none; border-radius:12px; cursor:pointer; transition:0.2s; } button.uploadReel:hover { background:#ff8a50; }
 
-/* ---------------- Prayer ---------------- */ .prayer-card { background: linear-gradient(135deg,#f7971e,#ffd200); color:#0d1b3a; } button.amen { margin-top:10px; background:#ff4e50; color:#fff; padding:8px 15px; border:none; border-radius:8px; cursor:pointer; transition:0.2s; } button.amen:hover { background:#ff8a50; }
+/* ---------------- Prayer ---------------- */ .prayer-card { background: linear-gradient(135deg,#f7971e,#ffd200); color:#0d1b3a; } button.amen { margin-top:10px; background:#FFD700; color:#0d1b3a; padding:8px 15px; border:none; border-radius:8px; cursor:pointer; transition:0.2s; } button.amen:hover { background:#ffec99; }
 
 /* ---------------- Chat ---------------- */ .chat-box { background:#1e3c72; padding:15px; border-radius:15px; height:400px; overflow-y:auto; margin-bottom:10px; } .chat-message { padding:8px 12px; border-radius:12px; margin-bottom:5px; max-width:80%; } .chat-message.user { background:#FFD700; color:#0d1b3a; margin-left:auto; } .chat-message.other { background:#04C8DE; color:#0d1b3a; margin-right:auto; } .chat-input { display:flex; gap:5px; } .chat-input input { flex:1; padding:10px; border-radius:12px; border:none; } .chat-input button { padding:10px 15px; border:none; border-radius:12px; background:#FFD700; color:#0d1b3a; cursor:pointer; transition:0.2s; } .chat-input button:hover { background:#ffec99; }
 
 footer { text-align:center; padding:15px; font-size:0.9rem; color:#ccc; margin-top:20px; } </style>
 
 </head>
-<body><!-- ================= HOME ================= --><div class="section active" id="home">
-  <div class="cards-grid">
-    <div class="card">
-      <h3>📖 Bible</h3>
-      <p>Explore the full King James Bible online or search any verse.</p>
-    </div>
-    <div class="card">
-      <h3>🎶 Hymns</h3>
-      <p>Search and sing along from the Golden Bells hymns collection.</p>
-    </div>
-    <div class="card">
-      <h3>🙏 Prayer</h3>
-      <p>Daily prayer updated automatically every day at 12:00 AM.</p>
-    </div>
-    <div class="card">
-      <h3>📸 Reels & Posts</h3>
-      <p>Short spiritual clips & inspirational posts for youths.</p>
-    </div>
-  </div>
+<body><!-- ================= HOME / REELS ================= --><div class="section active" id="home">
+  <div class="reel-feed" id="reelFeed"></div>
+  <input type="text" id="reelInput" class="reelInput" placeholder="Upload your reel (text/image URL)">
+  <button class="uploadReel" onclick="uploadReel()">Upload Reel</button>
 </div><!-- ================= BIBLE ================= --><div class="section" id="bible">
   <div class="card">
     <h3>📖 Search Bible</h3>
@@ -73,9 +57,9 @@ footer { text-align:center; padding:15px; font-size:0.9rem; color:#ccc; margin-t
 // ---------------- Bottom Nav ----------------
 const navButtons = document.querySelectorAll('nav.bottom-nav button');
 navButtons.forEach(btn => btn.addEventListener('click', () => {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  const id = btn.textContent.toLowerCase();
-  document.getElementById(id).classList.add('active');
+  const idMap = {Home:'home', Bible:'bible', Hymn:'hymn', Prayer:'prayer', Chat:'chat'};
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(idMap[btn.textContent]).classList.add('active');
   navButtons.forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
 }));
@@ -106,7 +90,6 @@ function getPrayerOfTheDay(){
   document.getElementById('prayerText').innerText = localStorage.getItem('prayerText');
 }
 getPrayerOfTheDay();
-
 function countAmen(){
   let count = parseInt(localStorage.getItem('amenCount')) || 0;
   count++;
@@ -143,12 +126,10 @@ function sendMessage(){
   chatBox.appendChild(p);
   input.value='';
   chatBox.scrollTop = chatBox.scrollHeight;
-  // save chat
   let chatLog = JSON.parse(localStorage.getItem('chatLog')) || [];
   chatLog.push({user:'You',msg:msg});
   localStorage.setItem('chatLog', JSON.stringify(chatLog));
 }
-// load chat on start
 let chatLog = JSON.parse(localStorage.getItem('chatLog')) || [];
 const chatBox = document.getElementById('chatBox');
 chatLog.forEach(c=>{
@@ -157,6 +138,37 @@ chatLog.forEach(c=>{
   p.textContent = c.msg;
   chatBox.appendChild(p);
 });
+
+// ---------------- REELS ----------------
+let reels = JSON.parse(localStorage.getItem('reels')) || [
+  "🙏 Daily Verse: John 3:16 – For God so loved the world...",
+  "🎶 Hymn Inspiration: Amazing Grace",
+  "💡 Fun Fact: Hymns were memorized because books were rare",
+  "🙏 Prayer Reminder: Lord, guide my steps today",
+  "📖 Tip: Read 1 chapter of Psalms today"
+];
+function loadReels(){
+  const feed = document.getElementById('reelFeed');
+  feed.innerHTML = reels.map((r,i) => `<div class="reel-card">${r}<button onclick="countAmenReel(${i})">🙏 Amen</button></div>`).join('');
+}
+let reelAmenCounts = JSON.parse(localStorage.getItem('reelAmenCounts')) || Array(reels.length).fill(0);
+function countAmenReel(i){
+  reelAmenCounts[i]++;
+  localStorage.setItem('reelAmenCounts', JSON.stringify(reelAmenCounts));
+  alert('Amen count for this reel: ' + reelAmenCounts[i]);
+}
+function uploadReel(){
+  const input = document.getElementById('reelInput');
+  const val = input.value.trim();
+  if(val==='') return;
+  reels.push(val);
+  localStorage.setItem('reels', JSON.stringify(reels));
+  reelAmenCounts.push(0);
+  localStorage.setItem('reelAmenCounts', JSON.stringify(reelAmenCounts));
+  input.value='';
+  loadReels();
+}
+loadReels();
 </script><nav class="bottom-nav">
   <button class="active">Home</button>
   <button>Bible</button>
@@ -164,4 +176,4 @@ chatLog.forEach(c=>{
   <button>Prayer</button>
   <button>Chat</button>
 </nav></body>
-      </html>
+  </html>
